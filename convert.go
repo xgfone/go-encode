@@ -7,7 +7,7 @@ import (
 	"github.com/axgle/mahonia"
 )
 
-// Convert the content to 'to' from 'from'.
+// Convert the content to the encoding of to from the encoding of from.
 //
 // The charset of content is 'from', and the result is 'to'.
 func Convert(from, to, content string) (string, error) {
@@ -26,7 +26,7 @@ func Convert(from, to, content string) (string, error) {
 	return _enc, nil
 }
 
-// Convert the content to UTF-8 from 'from'.
+// Convert the content to the encoding of UTF8 from the encoding of from.
 //
 // The charset of content is 'from', and the result is UTF-8.
 func ToUtf8(from, content string) (string, error) {
@@ -38,7 +38,7 @@ func ToUtf8(from, content string) (string, error) {
 	return dec.ConvertString(content), nil
 }
 
-// Convert the content to 'to' from UTF-8.
+// Convert the content to the encoding of to from the encoding of UTF-8.
 //
 // The charset of content is UTF-8, and the result is 'to'.
 func FromUtf8(to, content string) (string, error) {
