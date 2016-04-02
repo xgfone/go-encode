@@ -8,6 +8,11 @@ It supports the common charset encoding. See [Charset](./charsets.md).
 
     You need using the alias of the charset.
 
+## Installation
+```shell
+$ go get -u github.com/xgfone/go-encode
+```
+
 ## Example
 ```go
 package main
