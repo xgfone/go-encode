@@ -26,14 +26,17 @@ import (
 func main() {
     gbk := string([]byte{'\xd6', '\xd0', '\xb9', '\xfa'})
 
+    // Convert the string from GBK to UTF8
     if utf8, err := encode.ToUtf8("gbk", gbk); err == nil {
         fmt.Printf("%v\n", utf8) // 中国
     }
 
+    // Convert the string from GBK to UTF8
     if utf8, err := encode.Convert("gbk", "utf8", gbk); err == nil {
         fmt.Printf("%v\n", utf8) // 中国
     }
 
+    // Convert the string from UTF8 to GBK
     if _gbk, err := encode.FromUtf8("gbk", "中国"); err == nil {
         fmt.Printf("%x\n", _gbk) // d6d0b9fa
     }
