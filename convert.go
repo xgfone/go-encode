@@ -1,7 +1,6 @@
 package encode
 
 import (
-	"bytes"
 	"errors"
 	"fmt"
 	"io"
@@ -41,19 +40,14 @@ func ToUtf8(from, content string) (string, error) {
 }
 
 // ReaderToUtf8 is the same as ToUtf8, but reading the content from io.Reader.
-func ReaderToUtf8(from string, r io.Reader) (string, error) {
+func ReaderToUtf8(from string, r io.Reader) (io.Reader, error) {
 	dec := mahonia.NewDecoder(from)
 	if dec == nil {
 		arg := fmt.Sprintf("Not support the charset: %v", from)
-		return "", errors.New(arg)
+		return nil, errors.New(arg)
 	}
 
-	_dec := dec.NewReader(r)
-	buf := bytes.NewBuffer(nil)
-	if _, err := io.Copy(buf, _dec); err != nil {
-		return "", err
-	}
-	return buf.String(), nil
+	return dec.NewReader(r), nil
 }
 
 // FromUtf8 converts the content to the encoding of to from the encoding of UTF-8.
